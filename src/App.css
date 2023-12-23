@@ -1,1 +1,44 @@
+#root {
+  display: grid;
+  justify-content: center;
+  align-content: space-between;
+  min-height: 100vh;
+}
 
+header {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  padding: 16px 0px;
+}
+
+header ul {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  gap: 16px;
+}
+
+header ul li {
+  list-style: none;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-content: space-between;
+  justify-content: center;
+}
+
+footer section {
+  flex: 1;
+}
+
+footer section ul {
+  padding: 0;
+}
+
+footer section li {
+  list-style: none;
+}
