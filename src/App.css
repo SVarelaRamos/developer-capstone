@@ -5,9 +5,15 @@
   min-height: 100vh;
 }
 
-header {
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header .container {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
   gap: 32px;
   padding: 16px 0px;
 }
@@ -21,6 +27,28 @@ header ul {
 
 header ul li {
   list-style: none;
+}
+
+header ul li a {
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.cta {
+  background-color: #495e57;
+  width: 100vw;
+  color: #edefee;
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  position: relative;
+}
+.cta div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 footer {

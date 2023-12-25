@@ -1,11 +1,13 @@
-import Logo from "./Logo.svg";
+import Logo from "./logo.svg";
 import Nav from "./Nav";
 
 function Header() {
   return (
     <header>
-      <img src={Logo} alt="Little lemon logo"></img>
-      <Nav />
+      <div className="container">
+        <img src={Logo} alt="Little lemon logo"></img>
+        <Nav />
+      </div>
     </header>
   );
 }
