@@ -5,6 +5,13 @@
   min-height: 100vh;
 }
 
+p {
+  font-size: 16px;
+  line-height: 1.5rem;
+  max-width: 65ch;
+  text-wrap: pretty;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -36,8 +43,9 @@ header ul li a {
 }
 
 .cta {
+  padding: 16px 0;
   background-color: #495e57;
-  width: 100vw;
+  width: 100%;
   color: #edefee;
   display: flex;
   flex-direction: row;
@@ -48,6 +56,44 @@ header ul li a {
   width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+}
+.weeks-specials {
+  margin: 0 auto;
+  max-width: 1200px;
+  margin: 64px 32px;
+}
+.week-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-list {
+  display: flex;
+  gap: 32px;
+}
+
+.menu-list article {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  background-color: #edefee;
+}
+.menu-list p {
+  padding: 16px;
+}
+.menu-list footer {
+  padding: 16px;
+  display: flex;
+  justify-content: start;
+}
+
+.menu-list header {
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
 }
 
