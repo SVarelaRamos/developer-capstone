@@ -12,7 +12,7 @@ function Main() {
             </p>
             <a href="#root">Reserve a table</a>
           </article>
-          <img alt="pinchos"></img>
+          <img alt="pinchos" />
         </div>
       </section>
     </main>
