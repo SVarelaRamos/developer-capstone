@@ -1,5 +1,11 @@
+import BookingForm from "./BookingForm";
+
 function BookingPage() {
-  return <main>hola</main>;
+  return (
+    <main>
+      <BookingForm />
+    </main>
+  );
 }
 
 export default BookingPage;
