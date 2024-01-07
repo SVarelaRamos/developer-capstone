@@ -1,8 +1,32 @@
 #root {
+  font-family: "Karla", sans-serif;
   display: grid;
   justify-content: center;
   align-content: space-between;
   min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Markazi Text", serif;
+  margin: 0;
+}
+
+h1 {
+  font-size: 64px;
+  font-weight: medium;
+}
+h2,
+h3 {
+  font-size: 40px;
+  font-weight: normal;
+}
+h5 {
+  font-size: 24px;
+  font-weight: normal;
 }
 
 p {
@@ -39,7 +63,14 @@ header ul li {
 header ul li a {
   text-decoration: none;
   font-weight: 600;
-  text-transform: uppercase;
+}
+.button.button-primary {
+  background-color: #face14;
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .cta {
@@ -52,6 +83,10 @@ header ul li a {
   align-content: space-between;
   position: relative;
 }
+.cta h1 {
+  color: #face14;
+}
+
 .cta div {
   width: 100%;
   display: flex;
@@ -82,11 +117,12 @@ header ul li a {
 }
 .menu-list p {
   padding: 16px;
+  flex: 1;
 }
 .menu-list footer {
   padding: 16px;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .menu-list header {

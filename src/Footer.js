@@ -3,7 +3,7 @@ function Footer() {
     <footer className="container">
       <img src="" alt="Little Lemon logo"></img>
       <section>
-        <h3>Doormat navigation</h3>
+        <h5>Doormat navigation</h5>
         <ul>
           <li>
             <a href="#root">Home</a>
@@ -26,7 +26,7 @@ function Footer() {
         </ul>
       </section>
       <section>
-        <h3>Contact</h3>
+        <h5>Contact</h5>
         <ul>
           <li>
             <a href="#root">Address</a>
@@ -40,7 +40,7 @@ function Footer() {
         </ul>
       </section>
       <section>
-        <h3>Social Media Links</h3>
+        <h5>Social Media Links</h5>
         <ul>
           <li>
             <a href="#root">Social 1</a>

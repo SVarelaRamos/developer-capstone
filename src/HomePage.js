@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function HomePage() {
   return (
     <main>
@@ -10,7 +12,9 @@ function HomePage() {
               We are a family owned Mediterranean restaurant, focused on
               traditional recipes serverd with a modern twist
             </p>
-            <a href="#root">Reserve a table</a>
+            <Link className="button button-primary" to={"/booking"}>
+              Reserve a table
+            </Link>
           </article>
           <img alt="pinchos" />
         </div>
@@ -18,7 +22,9 @@ function HomePage() {
       <section className="weeks-specials">
         <div className="week-title">
           <h2>This weeks specials!</h2>
-          <a href="#root">Online menu</a>
+          <a className="button button-primary" href="#root">
+            Online menu
+          </a>
         </div>
         <div className="menu-list">
           <article>
