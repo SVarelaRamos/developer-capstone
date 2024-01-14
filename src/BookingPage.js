@@ -1,13 +1,16 @@
-import { useEffect, useReducer } from "react";
+import { useReducer } from "react";
+import { useNavigate } from "react-router-dom";
 import BookingForm from "./BookingForm";
-import { fetchAPI } from "./fakeApi";
-async function updateTimes(date) {
-  const availableTimes = await fetchAPI(date);
+import fakeAPI from "./fakeApi";
+function updateTimes(date) {
+  const availableTimes = fakeAPI.fetchAPI(date);
   return { availableTimes: availableTimes };
 }
 
-async function initializeTimes() {
-  const availableTimes = fetchAPI(new Date().toISOString().split("T")[0]);
+function initializeTimes() {
+  const availableTimes = fakeAPI.fetchAPI(
+    new Date().toISOString().split("T")[0]
+  );
   return { availableTimes: availableTimes };
 }
 
@@ -17,13 +20,22 @@ const reducer = (state, action) => {
 };
 
 function BookingPage() {
-  useEffect(() => {
-    initializeTimes();
-  }, []);
+  const navigate = useNavigate();
+
+  function submitForm(formData) {
+    if (fakeAPI.submitAPI(formData)) {
+      navigate("/confirmed");
+    }
+  }
+
   const [state, dispatch] = useReducer(reducer, initializeTimes());
   return (
     <main>
-      <BookingForm availableTimes={state.availableTimes} dispatch={dispatch} />
+      <BookingForm
+        availableTimes={state.availableTimes}
+        dispatch={dispatch}
+        submitForm={submitForm}
+      />
     </main>
   );
 }

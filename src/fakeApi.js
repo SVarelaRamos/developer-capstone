@@ -1,53 +1,39 @@
-const availableTimesByDate = {
-  "2024-02-29": ["10:00", "11:00", "12:00"],
-  "2024-01-01": ["10:00", "11:00", "12:00"],
-  "2024-01-02": ["14:00", "15:00", "16:00"],
-  "2024-01-03": ["10:00", "11:00", "12:00"],
-  "2024-01-04": ["14:00", "15:00", "16:00"],
-  "2024-01-05": ["10:00", "11:00", "12:00"],
-  "2024-01-06": ["14:00", "15:00", "16:00"],
-  "2024-01-07": ["10:00", "11:00", "12:00"],
-  "2024-01-08": ["14:00", "15:00", "16:00"],
-  "2024-01-09": ["10:00", "11:00", "12:00"],
-  "2024-01-10": ["14:00", "15:00", "16:00"],
-  "2024-01-11": ["10:00", "11:00", "12:00"],
-  "2024-01-12": ["14:00", "15:00", "16:00"],
-  "2024-01-13": ["10:00", "11:00", "12:00"],
-  "2024-01-14": ["14:00", "15:00", "16:00"],
-  "2024-01-15": ["10:00", "11:00", "12:00"],
-  "2024-01-16": ["14:00", "15:00", "16:00"],
-  "2024-01-17": ["10:00", "11:00", "12:00"],
-  "2024-01-18": ["14:00", "15:00", "16:00"],
-  "2024-01-19": ["10:00", "11:00", "12:00"],
-  "2024-01-20": ["14:00", "15:00", "16:00"],
+// Inspired by 'alexismenest' capstone 'mockAPI' logic.
+// fetchAPI accepts a JavaScript Date object.
+// fetchAPI returns a list of randomly generated available times.
+// The times are between 15:00 and 23:30.
+// The list always begins with "--- Select a Time---"
+// I found this useful for debugging.
+//
+// submitAPI always returns 'true'.
+
+const seededGenerator = (date, hour) => {
+  const m = 9;
+  const d = date.getDate();
+  const result = ((d + hour) % m) / 10;
+
+  return result;
 };
 
-const fetchAPI = (date) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (availableTimesByDate[date]) {
-        resolve(availableTimesByDate[date]);
-      } else {
-        reject(new Error("No available times for the selected date."));
-      }
-    }, 1000);
-  });
+const fetchAPI = (dateStr) => {
+  const date = new Date(Date.parse(dateStr));
+  let result = [];
+
+  result.push("--- Select a Time ---");
+
+  for (let hour = 15; hour <= 23; hour++) {
+    if (seededGenerator(date, hour) < 0.5) result.push(hour + ":00");
+    if (seededGenerator(date, hour + 7) < 0.5) result.push(hour + ":30");
+  }
+
+  return result;
 };
 
-const submitAPI = (formData) => {
-  availableTimesByDate[formData.date] = availableTimesByDate[
-    formData.date
-  ].filter((time) => time !== formData.time);
+const submitAPI = (formData) => true;
 
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (formData) {
-        resolve(true); // Simulate successful submission
-      } else {
-        reject(new Error("Form submission failed."));
-      }
-    }, 1000); // Simulate API delay
-  });
+const fakeAPI = {
+  fetchAPI: fetchAPI,
+  submitAPI: submitAPI,
 };
 
-export { fetchAPI, submitAPI };
+export default fakeAPI;

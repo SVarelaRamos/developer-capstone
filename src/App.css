@@ -2,7 +2,7 @@
   font-family: "Karla", sans-serif;
   display: grid;
   justify-content: center;
-  align-content: space-between;
+  grid-template-rows: auto 1fr auto;
   min-height: 100vh;
 }
 
