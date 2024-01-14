@@ -7,6 +7,12 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
   const [resTime, setResTime] = useState("");
   const [guests, setGuests] = useState(1);
   const [occasion, setOcasion] = useState("Birthday");
+  const [errors, setErrors] = useState({
+    date: null,
+    time: null,
+    guests: null,
+    occasion: null,
+  });
 
   function handleGuests(e) {
     setGuests(e.value);
@@ -19,6 +25,16 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
 
   function handleResTime(e) {
     setResTime(e.target.value);
+    console.log(e.target.value);
+    if (!e.target.value || e.target.value === "--- Select a Time ---") {
+      setErrors((prevVal) => {
+        return { ...prevVal, time: "Choose a valid time" };
+      });
+    } else {
+      setErrors((prevVal) => {
+        return { ...prevVal, time: null };
+      });
+    }
   }
 
   function handleOcasion(e) {
@@ -27,7 +43,7 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-
+    if (errors.time) return;
     submitForm({
       date: resDate,
       time: resTime,
@@ -39,7 +55,7 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
     <>
       <h1>Book your table!</h1>
       <form
-        style={{ display: "grid", maxWidth: "200px", gap: "20px" }}
+        style={{ display: "grid", maxWidth: "200px", gap: "10px" }}
         onSubmit={handleSubmit}
       >
         <label htmlFor="res-date">Choose date</label>
@@ -57,6 +73,7 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
             </option>
           ))}
         </select>
+        {errors.time && <span class="error">{errors.time}</span>}
         <label htmlFor="guests">Number of guests</label>
         <input
           type="number"
@@ -73,6 +90,7 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
           <option>Anniversary</option>
         </select>
         <input
+          disabled={errors.time}
           class="button button-primary"
           type="submit"
           value="Make Your reservation"
